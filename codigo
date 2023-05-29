@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <title>YULIbot App</title>
+</head>
+<body class="bg-gray-800 min-h-screen">
+       </div>
+        <footer class="mt-16 text-white">
+            <a href="https://enroncorporationweb.webnode.es/" target="_blank" rel="noopener noreferrer" class="underline"> 
+    🌐 ENRON Corporacion Web (YULIBOT).</a>
+        </footer>
+    <div class="container mx-auto px-4 py-16">
+        <form id="chatForm" class="mb-8">
+            <div class="mb-4">
+   <div style="display: flex; justify-content: center;">
+<img src="https://media.istockphoto.com/id/1188458318/es/vector/retrato-de-una-hermosa-empresaria-asi%C3%A1tica-en-anteojos-ilustraci%C3%B3n-plana-vectorial-asi%C3%A1tico.jpg?s=170667a&w=0&k=20&c=xqf7r8MaVKkpNMVv8lIMl3G9le7mXq6iX4S4XS0apCQ=">
+</div>
+<form id="chatForm" class="mb-8">
+<div align="center">
+<input type="text" id="textInput" placeholder="Escribe tu mensaje aquí" class="bg-gray-600 text-white px-8 py-2 rounded-lg">
+</div>
+<button class="px-2 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600" type="submit">👩🏻‍🏫</button>
+</div>
+<form id="chatForm" class="mb-8">
+<div class="flex items-center mb-4">
+</div>
+<input type="submit" value="👩🏻‍🏫" style="background-color: #0044cc; color: white;">
+        <div id="responseSection" class="bg-gray-600 text-white px-14 py-5 rounded-lg">
+          <p id="responseText" class="whitespace-pre-line"> 
+          </p>    
+    </div></form>
+        <div class="spinner hidden" style="border: 4px solid rgba(0,0,0,0.1); border-left-color: blue; animation: spin 1s linear infinite;">
+    <script>
+        document.getElementById("chatForm").addEventListener("submit", async (event) => {
+            event.preventDefault();
+            const textInput = document.getElementById("textInput").value;
+            const prompt = `${textInput} {Send button}`;
+            document.querySelector(".spinner").classList.remove("hidden");
+
+            try {
+                const response = await fetch(`https://a.picoapps.xyz/ask-ai?prompt=${encodeURIComponent(prompt)}`);
+                const data = await response.json();
+
+                document.querySelector(".spinner").classList.add("hidden");
+                document.getElementById("responseText").innerText = data.response;
+
+            } catch (error) {
+                document.querySelector(".spinner").classList.add("hidden");
+                console.error("Error occurred:", error);
+            }
+        });
+
+        document.querySelector(".spinner").style.animation = "spin 1s linear infinite";
+        document.querySelector(".spinner").style.width = "18px";
+        document.querySelector(".spinner").style.height = "18px";
+        document.querySelector(".spinner").style.borderRadius = "50%";
+        document.querySelector(".spinner").style.display = "block";
+        document.querySelector(".spinner").style.margin = "auto";
+    
+        document.styleSheets[0].insertRule("@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }", 0);
+    </script>
+</body>
+</html>
